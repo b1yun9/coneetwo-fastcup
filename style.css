@@ -1,0 +1,227 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+}
+
+/* section */
+section {
+    padding: 90px 0;
+}
+
+/* hero */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4f83cc, #6fa3e0);
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    color: #f2f2f2;
+    display: flex;
+    align-items: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    top: -100px;
+    right: -100px;
+    filter: blur(80px);
+}
+
+
+
+
+/* navbar */
+.navbar {
+    padding: 14px 0;
+}
+
+/* logo */
+.navbar-logo {
+    width: 60px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* poster */
+.poster-wrapper {
+    display: inline-block;
+    overflow: visible;
+}
+
+.poster-conee {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    margin: 20px auto;
+    display: block;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* hover poster */
+.poster-conee:hover {
+    transform: scale(1.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* mobile poster */
+@media (max-width: 576px) {
+    .poster-conee {
+        max-height: 100%;
+        border-radius: 12px;
+    }
+}
+
+/* menu link */
+.navbar-nav .nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    padding: 8px 14px;
+    transition: all 0.3s ease;
+}
+
+/* hover terang */
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+}
+
+/* underline animasi */
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 60%;
+}
+
+/* tombol daftar */
+.navbar .btn {
+    border-radius: 999px;
+    padding: 8px 20px;
+    font-weight: 600;
+}
+
+/* button */
+.btn-primary {
+    background-color: #1b47c0;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #1e68d8;
+}
+
+/* card */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card ul {
+    padding-left: 18px;
+}
+
+.card ul li {
+    margin-bottom: 6px;
+}
+
+/* participant list */
+.participant-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    height: 100%;
+}
+
+.participant-title {
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #212529;
+}
+
+.participant-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.participant-name {
+    background: #f1f5ff;
+    color: #0d6efd;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.participant-name:hover {
+    background: #cfe2cf;
+    transform: translateY(-2px);
+}
+
+/* footer */
+footer {
+    font-size: 14px;
+}
+
+/* mobile navbar */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: #212529;
+        margin-top: 12px;
+        border-radius: 14px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .navbar-nav {
+        gap: 10px;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        display: block;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+
+    .navbar-nav .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
