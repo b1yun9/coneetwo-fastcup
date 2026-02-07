@@ -188,6 +188,29 @@ section {
     transform: translateY(-2px);
 }
 
+/* bagan */
+.bagan-img {
+    max-width: 850px;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease;
+}
+
+/* efek bagan */
+.bagan-img:hover {
+    transform: scale(1.02);
+}
+
+/* mobile */
+@media (max-width:768px) {
+    .bagan-img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+}
+
 /* footer */
 footer {
     font-size: 14px;
