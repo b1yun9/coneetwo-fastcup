@@ -135,7 +135,14 @@
                             🏸 Badminton
                         </h5>
                         <div id="list-badminton" class="participant-list d-flex flex-wrap justify-content-center gap-2">
-                            
+                            <span class="participant-name dummy">Birul & Syilvia</span>
+                            <span class="participant-name dummy">Bahrul & Aghisna</span>
+                            <span class="participant-name dummy">Arysa & Deska</span>
+                            <span class="participant-name dummy">Riki & Nikmah</span>
+                            <span class="participant-name dummy">Divo & Wikaira</span>
+                            <span class="participant-name dummy">Faris & Lutfi</span>
+                            <span class="participant-name dummy">Naufal & Dini</span>
+                            <span class="participant-name dummy">Amar & Vera</span>
                         </div>
                     </div>
                 </div>
@@ -255,11 +262,12 @@
             if (!list) return;
 
             const data = JSON.parse(localStorage.getItem("peserta-" + jenis)) || [];
-            list.innerHTML = "";
-
+            // list.innerHTML = "";
+            // hapus hanya hasil js sblmnya, bukan dummy
+            list.querySelectorAll(".generated").forEach(el => el.remove());
             data.forEach(tim => {
                 const span = document.createElement("span");
-                span.className = "participant-name";
+                span.className = "participant-name generated";
                 span.textContent = `${tim.tim} — ${tim.a1} & ${tim.a2}`;
                 list.appendChild(span);
             });
