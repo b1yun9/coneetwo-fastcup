@@ -197,27 +197,38 @@
             }
 
             let nama1 = prompt("Masukkan Nama Anggota 1:");
-            if (!nama1) {
-                alert("Pendaftaran dibatalkan.");
-                return;
-            }
+            if (!nama1) return batal();
 
             let nama2 = prompt("Masukkan Nama Anggota 2:");
-            if (!nama2) {
-                alert("Pendaftaran dibatalkan.");
-                return;
-            }
+            if (!nama2) return batal();
+
+            let nama3 = prompt("Masukkan Nama Anggota 3:");
+            if (!nama3) return batal();
+
+            let nama4 = prompt("Masukkan Nama Anggota 4:");
+            if (!nama4) return batal();
 
             namaTim = namaTim.trim();
             nama1 = nama1.trim();
             nama2 = nama2.trim();
+            nama3 = nama3.trim();
+            nama4 = nama4.trim();
 
-            if (namaTim.length < 2 || nama1.length < 2 || nama2.length < 2) {
+            if (
+                namaTim.length < 2 ||
+                nama1.length < 2 ||
+                nama2.length < 2 ||
+                nama3.length < 2 ||
+                nama4.length < 2
+            ) {
                 alert("Nama tim atau anggota tidak valid.");
                 return;
             }
 
-            if (nama1.toLowerCase() === nama2.toLowerCase()) {
+            // Cegah nama sama dalam satu tim
+            const anggota = [nama1, nama2, nama3, nama4];
+            const unik = new Set(anggota.map(n => n.toLowerCase()));
+            if (unik.size !== 4) {
                 alert("Nama anggota tidak boleh sama.");
                 return;
             }
@@ -227,17 +238,11 @@
 
             // Cegah duplikat tim
             const sudahAda = data.some(t =>
-                t.tim.toLowerCase() === namaTim.toLowerCase() ||
-                (
-                    (t.a1.toLowerCase() === nama1.toLowerCase() &&
-                        t.a2.toLowerCase() === nama2.toLowerCase()) ||
-                    (t.a1.toLowerCase() === nama2.toLowerCase() &&
-                        t.a2.toLowerCase() === nama1.toLowerCase())
-                )
+                t.tim.toLowerCase() === namaTim.toLowerCase()
             );
 
             if (sudahAda) {
-                alert("Tim ini sudah terdaftar.");
+                alert("Nama tim sudah terdaftar.");
                 return;
             }
 
@@ -245,7 +250,9 @@
             data.push({
                 tim: namaTim,
                 a1: nama1,
-                a2: nama2
+                a2: nama2,
+                a3: nama3,
+                a4: nama4
             });
 
             localStorage.setItem(key, JSON.stringify(data));
@@ -253,18 +260,25 @@
 
             // Pesan WhatsApp
             const pesan = `Halo Admin 👋
-            Saya ingin mendaftar lomba *${jenis}*
-
-            Nama Tim: *${namaTim}*
-            Anggota:
-            - ${nama1}
-            - ${nama2}
-
-            Kelas: XI TKJ 2
-            Terima kasih 🙏`;
+    Saya ingin mendaftar lomba *${jenis}*
+    
+    Nama Tim: *${namaTim}*
+    Anggota:
+    - ${nama1}
+    - ${nama2}
+    - ${nama3}
+    - ${nama4}
+    
+    Kelas: XI TKJ 2
+    Terima kasih 🙏`;
 
             const waLink = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(pesan)}`;
             window.location.assign(waLink);
+        }
+
+        function batal() {
+            alert("Pendaftaran dibatalkan.");
+            return;
         }
 
         function renderPeserta(jenis) {
@@ -272,13 +286,14 @@
             if (!list) return;
 
             const data = JSON.parse(localStorage.getItem("peserta-" + jenis)) || [];
-            // list.innerHTML = "";
-            // hapus hanya hasil js sblmnya, bukan dummy
+
             list.querySelectorAll(".generated").forEach(el => el.remove());
+
             data.forEach(tim => {
                 const span = document.createElement("span");
                 span.className = "participant-name generated";
-                span.textContent = `${tim.tim} — ${tim.a1} & ${tim.a2}`;
+                span.textContent =
+                    `${tim.tim} — ${tim.a1}, ${tim.a2}, ${tim.a3}, ${tim.a4}`;
                 list.appendChild(span);
             });
         }
@@ -287,6 +302,7 @@
             renderPeserta("badminton");
         });
     </script>
+
 
 
 
