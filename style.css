@@ -9,7 +9,7 @@ body {
 
 /* section */
 section {
-    padding: 90px 0;
+    padding: 100px 0;
 }
 
 /* hero */
@@ -17,11 +17,12 @@ section {
     min-height: 100vh;
     background: linear-gradient(135deg, #4f83cc, #6fa3e0);
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
     color: #f2f2f2;
-    display: flex;
-    align-items: center;
+    padding: 120px 20px 80px;
 }
 
 .hero::before {
@@ -34,6 +35,13 @@ section {
     top: -100px;
     right: -100px;
     filter: blur(80px);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 80vh;
+        padding: 100px 20px 60px;
+    }
 }
 
 
@@ -59,10 +67,10 @@ section {
 
 .poster-conee {
     width: 100%;
-    max-width: 320px;
+    max-width: 400px;
     height: auto;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     margin: 20px auto;
     display: block;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -190,24 +198,25 @@ section {
 
 /* bagan */
 .bagan-img {
-    max-width: 850px;
+    max-width: 350px;
     width: 100%;
     height: auto;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transition: 0.3s ease;
+    margin-top: 20px;
 }
 
 /* efek bagan */
 .bagan-img:hover {
-    transform: scale(1.02);
+    transform: scale(1.09);
 }
 
 /* mobile */
 @media (max-width:768px) {
     .bagan-img {
-        max-width: 100%;
-        border-radius: 10px;
+        max-width: 80%;
+        border-radius: 12px;
     }
 }
 
